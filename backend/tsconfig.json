@@ -4,8 +4,8 @@
     "module": "ESNext",
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "outDir": "./backend/app",
-    "rootDir": "./backend/src",
+    "outDir": "app",
+    "rootDir": "src",
     // Strict Checks
     "alwaysStrict": true,
     "noImplicitAny": true,
