@@ -1,5 +1,6 @@
 {
   "name": "geoproject-backend",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "app/index.js",
@@ -18,13 +19,17 @@
   },
   "homepage": "https://github.com/lamalmao/SmartWebProject#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.2"
+    "mongoose": "^7.0.2",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.1",
+    "@types/winston": "^2.4.4",
     "typescript": "^5.0.2"
   }
 }
