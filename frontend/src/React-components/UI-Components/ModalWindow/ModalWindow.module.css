@@ -1,0 +1,25 @@
+.ModalWindow{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.ModalWindowContent{
+    width: fit-content;
+    padding: 20px;
+    background-color: #3A3F4E;
+    border-radius: 5px;
+    border: 1px solid #757D98;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+.ModalWindow.active{
+display: flex;
+justify-content: center;
+align-items: center;
+}
