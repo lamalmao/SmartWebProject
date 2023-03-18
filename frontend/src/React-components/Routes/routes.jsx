@@ -5,6 +5,7 @@ import MainPage from '../Pages/MainPage/MainPage';
 import QuizSelectPage from '../Pages/QuizSelectPage/QuizSelectPage';
 import ProfilePage from '../Pages/ProfilePage/ProfilePage';
 import EditQuizPage from '../Pages/EditQuizPage/EditQuizPage';
+import CrosswordPage from '../Pages/CrosswordPage/CrosswordPage';
 
 
 const AppRoutes = () => {
@@ -15,6 +16,7 @@ const AppRoutes = () => {
         <Route path='/quizselect' element={<QuizSelectPage />} />
         <Route path='/account' element={<ProfilePage />} />
         <Route path='/edit' element={<EditQuizPage />} />
+        <Route path='/crossword' element={<CrosswordPage />} />
         <Route />
       </Route>
     </Routes>
