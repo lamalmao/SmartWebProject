@@ -1,15 +1,16 @@
 import { Schema, model } from 'mongoose';
-import UserPassword from './password.js';
-import ConfirmationCode from './confirmation.js';
+import crypto from 'crypto';
 export const ROLES = {
     ADMIN: 'admin',
     USER: 'user'
 };
+const TimeShift = 60 * 60 * 1000;
+const Range = 9999 - 1000;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true,
         unique: true,
+        sparse: true,
         validate: {
             validator: function (username) {
                 return /^[a-zA-Z0-9\!\@\#\$\%\[\]\=\+\-\)\(\.\<\>\_]{5,15}$/.test(username);
@@ -19,8 +20,7 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true,
-        unique: true,
+        sparse: true,
         validate: {
             validator: function (email) {
                 return /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email);
@@ -30,51 +30,82 @@ const userSchema = new Schema({
     },
     telegram: {
         type: Number,
-        unique: true
+        sparse: true
     },
     role: {
         type: String,
-        required: true,
         enum: Object.values(ROLES),
         default: ROLES.USER
     },
-    registerFinished: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
     joinDate: {
         type: Date,
-        required: true,
         default: new Date()
     },
     password: {
-        type: UserPassword,
-        required: true
+        hash: {
+            type: String
+        },
+        salt: {
+            type: String
+        }
     },
     confirmationCode: {
-        type: ConfirmationCode
+        value: {
+            type: Number
+        },
+        until: {
+            type: String
+        },
+        active: {
+            type: Boolean
+        }
     },
+    activated: {
+        type: Boolean,
+        default: false
+    }
 }, {
     methods: {
         genCode: async function () {
-            const code = new ConfirmationCode();
-            this.confirmationCode = code;
+            this.confirmationCode = {
+                value: crypto.randomInt(Range),
+                until: new Date(Date.now() + TimeShift),
+                active: true
+            };
             await this.save();
-            return code;
+            return this.confirmationCode.value;
         },
         changePassword: async function (pwd) {
-            this.password = new UserPassword(pwd);
+            const newPass = this.createPassword(pwd);
+            this.password = {
+                salt: newPass[0],
+                hash: newPass[1]
+            };
             await this.save();
         },
         comparePassword: function (pwd) {
             if (!this.password)
                 return false;
-            return this.password.compare(pwd);
+            return crypto.pbkdf2Sync(pwd, this.password.salt, 1000, 128, 'sha512').toString('hex') === this.password.hash;
         },
         changeEmail: async function (email) {
             this.email = email;
             await this.save();
+        },
+        createPassword: function (password) {
+            const salt = crypto.randomBytes(32).toString('hex');
+            const hash = crypto.pbkdf2Sync(password, salt, 1000, 128, 'sha512').toString('hex');
+            return [salt, hash];
+        },
+        verifyPassword: function (password) {
+            return (password.length > 6 && password.length < 32 && /^[a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\-\=\+\\\/\[\]\<\>\,\.\`\~\:\;\'\"\?]{6,32}$/.test(password));
+        },
+        activateCode: async function (value) {
+            if (!this.confirmationCode || !this.confirmationCode.active || this.confirmationCode.value !== value)
+                return false;
+            this.confirmationCode.active = false;
+            await this.save();
+            return true;
         }
     }
 });
