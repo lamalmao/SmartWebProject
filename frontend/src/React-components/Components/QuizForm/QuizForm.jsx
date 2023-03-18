@@ -14,6 +14,11 @@ const QuizForm = () => {
             </label>
             <MSelect 
             style={{marginBottom:'25px'}}
+            defaulValue='Тип Квиза'
+            options={[{value:'PLACEHOLDER 1', name:'Placeholder1'},
+                      {value:'PLACEHOLDER 2', name:'Placeholder2'},                                            
+                      {value:'PLACEHOLDER 3', name:'Placeholder3'}
+                    ]}
             />
               <MInput
               style={{marginBottom:'25px'}}

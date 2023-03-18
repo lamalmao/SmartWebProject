@@ -1,6 +1,3 @@
-import ConfirmationCode from './confirmation.js';
-import UserPassword from './password.js';
-
 export default interface IUser {
   email?: string;
   username?: string;
@@ -8,6 +5,22 @@ export default interface IUser {
   role?: string;
   registerFinished?: boolean;
   joinDate?: Date;
-  password?: UserPassword;
-  confirmationCode?: ConfirmationCode;
+  password?: {
+    hash: string;
+    salt: string
+  };
+  confirmationCode?: {
+    value: number;
+    until: Date;
+    active: boolean;
+  };
+  activated?: boolean;
+
+  genCode(): Promise<number>;
+  changePassword(pwd: string): Promise<void>;
+  comparePassword(pwd: string): boolean;
+  changeEmail(email: string): Promise<void>;
+  activateCode(code: number): Promise<boolean>;
+  createPassword(password: string): [string, string];
+  verifyPassword(password: string): boolean;
 }

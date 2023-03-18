@@ -6,7 +6,7 @@ const MCheckbox = ({children,...props}) => {
         <div className={st.CheK}>
         <label className={st.switch}>
         <input {...props} type="checkbox"></input>
-            <span class={[st.slider, st.round].join(' ')}></span>
+            <span className={[st.slider, st.round].join(' ')}></span>
         </label>
         <label className={st.Label}>{children}</label>
         </div>
