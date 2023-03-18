@@ -5,7 +5,7 @@ const MButtonForm = ({surs,children, ...props}) => {
     return (
         <button className={st.MButtonForm} {...props}>
             {children}
-            <img src={surs}></img>
+            <img src={surs} alt='ButtonType'></img>
         </button>
     );
 };
