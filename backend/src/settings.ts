@@ -9,7 +9,6 @@ interface ISettings {
     name: string;
   };
   db: string;
-  pathToFront: string;
 }
 
 const settings: ISettings = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'settings.json')).toString());
