@@ -8,7 +8,7 @@ const CodeTelegramForm = ({...props}) => {
     return (
         <AuthForm {...props}>
         <label className={st.Label}> 
-          <span className={st.Span}> Перейдите  </span> в телеграм бота по <a target='_blank' href="" className={st.Link}>ссылке</a> и <span className={st.Span}>Введите</span> код
+          <span className={st.Span}> Перейдите  </span> в телеграм бота по <a target='_blank' href="#" className={st.Link}>ссылке</a> и <span className={st.Span}>Введите</span> код
           </label>
           <MInput
           style={{marginBottom:'25px'}}

@@ -9,7 +9,20 @@ import MailForm from '../MailForm/MailForm'
 import Message from '../../UI-Components/Message/Message'
 import CodeMailForm from '../CodeMailForm/CodeMailForm';
 import CodeTelegramForm from '../CodeTelegramForm/CodeTelegramForm';
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 const Navbar = () => {
+
+    const [formMailData, setFormMailData]=useState({
+        username:'',
+        password:'',
+        email:'',
+      })
+
+      const inputHandler = (e) => {
+        setFormMailData(prevState=>{return {...prevState,[e.target.name]:e.target.value}})
+    }
+
     const [log, setLog] = useState('');
     useSelector((state)=>state.visibility.value);
     const dispatch = useDispatch();
@@ -19,12 +32,57 @@ const Navbar = () => {
     }
     const redirMail = () =>{
         setLog('chooseMail')
-        
     }
-    const handleSubmitAndRedirCodeMail = (e) =>{
+const username = formMailData.username;
+const password = formMailData.password;
+const email = formMailData.email;
+    var newReqest = new Request("http://laesia.site:778/signup", {
+    headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
+    mode:'no-cors',
+    method: "POST",
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      email: email,
+      verificationMethod:'mail'
+    }),
+  });
+
+
+    const handleSubmitAndRedirCodeMail = async (e) =>{
+       
+    
         e.preventDefault()
-        setLog('codeMail')
-    }
+        // const MailUserData = {
+        //     username: formMailData.username,
+        //     password:formMailData.password,
+        //     email:formMailData.email,
+        //     verificationMethod:'mail',
+        // }
+        // axios.post('http://laesia.site:778/signup',{
+        //     headers:{
+        //         'Content-Type':'application/json',
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Origin':'http://laesia.site:778'
+        //     },
+        //     mode:'no-cors',data:MailUserData})
+        // .then(res=>{
+        //     console.log(res);
+        //     console.log(res.data)
+        // }
+        // )
+        try {
+            const res = await fetch(newReqest);
+            console.log(res);
+
+        } catch (err) {
+          console.log(err);
+        }
+    setLog('codeMail')
+        };
+        
+    
+
     const handleSubmitAndRedirTelegramCode = (e) =>{
         e.preventDefault()
         setLog('codeTelegram')
@@ -32,8 +90,8 @@ const Navbar = () => {
     
     console.log(log)
 
-
     
+   
 
     return (
 
@@ -41,7 +99,7 @@ const Navbar = () => {
                 <ModalWindow>
                 {log==='' ?
                 <TgForm redirTelegram={redirTelegram} redirMail={redirMail}/>:  
-                 log==='chooseMail'? <MailForm handleSubmitAndRedirCodeMail={handleSubmitAndRedirCodeMail}/>:
+                 log==='chooseMail'? <MailForm onchHandler={inputHandler} valuePassword={formMailData.password} valueMail={formMailData.email} valueUsername={formMailData.username}  handleSubmitAndRedirCodeMail={handleSubmitAndRedirCodeMail}/>:
                  log==='chooseTelegram'?<TelegramForm handleSubmitAndRedirTelegramCode={handleSubmitAndRedirTelegramCode}/>:
                  log==='codeMail'?<CodeMailForm/>:
                  log==='codeTelegram'?<CodeTelegramForm/>:
@@ -54,7 +112,7 @@ const Navbar = () => {
           
                 <div className={st.container}>
                 <div>
-                    <h2 className={st.Logo}><span className={st.LogoBold}>GEO</span>GAP</h2>
+                    <NavLink style={{textDecoration:'none', color:'white'}} to='/'><h2 className={st.Logo}><span className={st.LogoBold}>GEO</span>GAP</h2></NavLink>
                 </div>
 
                 <ul className={st.links}>
