@@ -3,7 +3,6 @@ export default interface IUser {
   username?: string;
   telegram?: number;
   role?: string;
-  registerFinished?: boolean;
   joinDate?: Date;
   password?: {
     hash: string;
@@ -15,6 +14,7 @@ export default interface IUser {
     active: boolean;
   };
   activated?: boolean;
+  image?: string;
 
   genCode(): Promise<number>;
   changePassword(pwd: string): Promise<void>;
