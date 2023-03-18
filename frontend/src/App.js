@@ -1,15 +1,27 @@
-import React from 'react';
-import './App.css';
-import AuthForm from './React-components/Components/AuthForm/AuthForm';
-import MainPage from './React-components/Pages/MainPage/MainPage';
+import        React                            from 'react';
+import        { BrowserRouter, Route, Routes } from 'react-router-dom';
+import                                              './App.css';
+import        Layout                           from './React-components/Components/Layout/Layout';
+import        MainPage                         from './React-components/Pages/MainPage/MainPage';
+
+
 
 
 
 function App() {
   return (
-    <div className="App">
-     <MainPage></MainPage>
-    </div>
+
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+        <Route path='/' element={<MainPage />} />
+          <Route />
+          <Route />
+          <Route />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  
   );
 }
 

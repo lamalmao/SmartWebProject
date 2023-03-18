@@ -1,0 +1,38 @@
+footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #282B36;
+}
+.MainInfo, .Section, .Contacts{
+    width: 15%;
+    color: white;
+    font-family: Montserrat-Reg;
+}
+.SectionList, .ContactsList{
+    list-style-type: none;
+
+}
+.SectionEl::before, .ContactsEl::before{
+    content: url('./ListStyle.svg');
+    padding-right: 5px;
+}
+.MainInfoTxt, .SectionList, .ContactsList{
+    padding-top: 10px;
+}
+.SectionEl, .ContactsEl{
+    padding-bottom: 10px;
+}
+.SectionEl{
+    cursor: pointer;
+}
+.Span{
+    font-family: Montserrat-Black;
+    letter-spacing: 3px;
+}
+.ContactsHeader,.SectionHeader,.MainInfoHeader{
+    letter-spacing: 3px;
+}
+.ContactsHeader,.SectionHeader{
+    font-family: Montserrat-Bold;
+}

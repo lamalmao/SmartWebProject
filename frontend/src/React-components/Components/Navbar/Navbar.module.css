@@ -1,0 +1,31 @@
+header{
+
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+  
+    
+}
+.links{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.LinksInside{
+    padding: 0px 20px;
+    font-family: Montserrat-Reg;
+    font-size: 14pt;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.Reg, .LogoBold{
+    font-family: Montserrat-Black;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+.Logo{
+    cursor: pointer;
+    font-family: Montserrat-Reg;
+    letter-spacing: 3px;
+}
