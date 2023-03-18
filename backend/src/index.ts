@@ -66,5 +66,33 @@ notificationBot.launch();
 console.log('Notification bot launched');
 
 if (process.env['ENABLE_FRONT'] === 'YES') {
-  app.use(express.static(settings.pathToFront));
+  const frontApp = express();
+
+  const privateKey = fs.readFileSync(path.join(process.cwd(), 'private.pem')).toString();
+  const certificate = fs.readFileSync(path.join(process.cwd(), 'cert.pem')).toString();
+
+  const credentials = {
+    key: privateKey,
+    cert: certificate
+  };
+
+  const frontHTTPServer = http.createServer(frontApp);
+  const frontHTTPSServer = https.createServer(credentials, frontApp);
+
+  app.use((req, res, next) => {
+    if (!req.secure) {
+      res.redirect('https://' + req.hostname + req.path);
+    } else {
+      next();
+    }
+  });
+
+  app.use('/', express.static(settings.pathToFront));
+
+  frontHTTPServer.listen(process.env['HOST'], 80, () => {
+    console.log('Front HTTP server started');
+  });
+  frontHTTPSServer.listen(process.env['HOST'], 443, () => {
+    console.log('Front HTTPS server started');
+  });
 }
