@@ -1,46 +1,84 @@
-footer{
+.container {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    justify-content: space-between;
+    width: 1140px;
+    margin: 0 auto;
+    padding: 50px 75px;
+    box-sizing: border-box;
+}
+
+footer {
     background-color: #282B36;
-   
-    
 }
-.MainInfo, .Section, .Contacts{
-  
-    width: 18%;
-    color: white;
+
+.MainInfo,
+.Section,
+.Contacts {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
     font-family: Montserrat-Reg;
+    color: #FFFFFF;
 }
-.SectionList, .ContactsList{
-   
+
+.SectionList,
+.ContactsList {
     list-style-type: none;
 
 }
-.SectionEl::before, .ContactsEl::before{
-    content: url('./ListStyle.svg');
-    padding-right: 5px;
-}
-.MainInfoTxt, .SectionList, .ContactsList{
-    padding-top: 10px;
 
-    
+.SectionEl::before,
+.ContactsEl::before {
+    content: url('./ListStyle.svg');
+    margin-right: 15px;
 }
-.SectionEl, .ContactsEl{
-    
-    padding-bottom: 10px;
+
+.MainInfoTxt {
+    max-width: 200px;
 }
-.SectionEl{
+
+.SectionList,
+.ContactsList {}
+
+.SectionEl,
+.ContactsEl {
     cursor: pointer;
+    margin-bottom: 5px;
+    transition: 0.2s;
 }
-.Span{
+
+.SectionEl:hover,
+.ContactsEl:hover {
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+.SectionEl:last-child,
+.ContactsEl:last-child {
+    margin-bottom: 0px;
+}
+
+.ContactSpan {
+    padding-left: 25px;
+}
+
+.Span {
     font-family: Montserrat-Black;
-    letter-spacing: 3px;
 }
-.ContactsHeader,.SectionHeader,.MainInfoHeader{
-    letter-spacing: 3px;
+
+.ContactsHeader,
+.SectionHeader {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.MainInfoHeader {
+    margin-bottom: 15px;
     font-size: 16px;
+    letter-spacing: 0.165em;
 }
-.ContactsHeader,.SectionHeader{
+
+.ContactsHeader,
+.SectionHeader {
     font-family: Montserrat-Bold;
 }
