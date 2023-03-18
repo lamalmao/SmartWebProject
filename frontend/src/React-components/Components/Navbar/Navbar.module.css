@@ -1,33 +1,61 @@
-header{
-
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    color: white;
-  
-    
+.container {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
-.links{
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    padding-top: 15px;
+    color: #FFFFFF;
+}
+
+.links {
     list-style-type: none;
     display: flex;
     align-items: center;
 }
-.LinksInside{
+
+.LinksInside {
     padding: 0px 20px;
     font-family: Montserrat-Reg;
     font-size: 16px;
     letter-spacing: 1px;
     cursor: pointer;
+    transition: 0.2s;
 }
-.Reg, .LogoBold{
+
+.LinksInside:hover {
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+.Reg,
+.LogoBold {
     font-family: Montserrat-Black;
     letter-spacing: 3px;
     cursor: pointer;
     font-size: 16px;
+    transition: 0.2s;
 }
-.Logo{
+
+.Reg:hover {
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+.Logo {
     font-size: 16px;
     cursor: pointer;
     font-family: Montserrat-Reg;
     letter-spacing: 3px;
+    transition: 0.2s;
+}
+
+.Logo:hover {
+    opacity: 0.5;
+    transition: 0.2s;
 }
