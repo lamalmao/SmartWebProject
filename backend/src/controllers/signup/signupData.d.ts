@@ -9,7 +9,5 @@ export interface ISignupRequest {
 
 export interface ISignupResponse {
   success: boolean;
-  verificationLink?: string;
-  userId?: Types.ObjectId;
   error?: string;
 }
