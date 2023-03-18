@@ -30,8 +30,7 @@ const host = process.env['HOST'] ? process.env['HOST'] : '127.0.0.1';
 var server;
 
 app.use(cors({
-  credentials: true,
-  origin: AuthMechanism.secure ? 'https' : 'http' + process.env['HOST'] + ':' + process.env['PORT']
+  credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
