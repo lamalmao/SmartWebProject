@@ -1,0 +1,19 @@
+.QuizItem{
+    display: flex;
+    align-items: center;
+    font-family: Montserrat-Reg;
+    color: white;
+}
+.PicQuizItem{
+    max-width: 241px;
+}
+.DiscPicBlock{
+    display: flex;
+}
+.DiscTitle{
+    display: flex;
+    flex-direction: column;
+    max-width:400px;
+    text-align: left;
+    align-items: flex-start;
+}
