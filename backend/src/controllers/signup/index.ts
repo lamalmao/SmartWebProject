@@ -39,7 +39,7 @@ export default async function signupController(req: Request<{}, {}, ISignupReque
     let responseBody: ISignupResponse = {
       success: true,
     }
-    res.cookie('userId', user._id, {
+    res.cookie('userId', user._id.toString(), {
       expires: new Date(Date.now() + 3600000)
     });
 
