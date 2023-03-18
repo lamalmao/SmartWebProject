@@ -3,7 +3,7 @@ import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm';
 import MInput from '../../UI-Components/MInput/MInput';
 import AuthForm from '../AuthForm/AuthForm';
 import st from './TelegramForm.module.css'
-const TelegramForm = ({...props}) => {
+const TelegramForm = ({handleSubmitAndRedirTelegramCode,...props}) => {
     return (
         <AuthForm {...props}>
         <label className={st.Label}> 
@@ -19,7 +19,7 @@ const TelegramForm = ({...props}) => {
             placeholder='Пароль'
             type='password'
             />
-             <MButtonForm type='submit'>
+             <MButtonForm onClick={handleSubmitAndRedirTelegramCode}  type='submit'>
                 РЕГИСТРАЦИЯ
               </MButtonForm>
             </AuthForm> 
