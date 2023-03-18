@@ -1,21 +1,35 @@
 import crypto from 'crypto';
-class ConfirmationCode {
-    static Range = 9999 - 1000;
-    static TimeShift = 60 * 60 * 1000;
-    value;
-    active;
-    until;
-    constructor() {
-        this.value = crypto.randomInt(ConfirmationCode.Range);
-        this.active = true;
-        this.until = new Date(Date.now() + ConfirmationCode.TimeShift);
+import { Schema, model } from 'mongoose';
+const TimeShift = 60 * 60 * 1000;
+const Range = 9999 - 1000;
+const ConfirmationCodeSchema = new Schema({
+    value: {
+        type: Number,
+        required: true
+    },
+    active: {
+        type: Boolean,
+        required: true
+    },
+    until: {
+        type: Date,
+        required: true
     }
-    verify(value) {
-        if (!this.active)
-            return false;
-        if (this.until > new Date())
-            return false;
-        return this.value === value;
+}, {
+    methods: {
+        verify: function (value) {
+            if (!this.active)
+                return false;
+            if (this.until < new Date())
+                return false;
+            return this.value === value;
+        },
+        createCode: function () {
+            const value = crypto.randomInt(Range);
+            const date = new Date(Date.now() + TimeShift);
+            return [value, date];
+        }
     }
-}
+});
+const ConfirmationCode = model('code', ConfirmationCodeSchema);
 export default ConfirmationCode;
