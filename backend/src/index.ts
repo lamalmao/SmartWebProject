@@ -12,6 +12,7 @@ import notificationBot from './bot/index.js';
 import mongoose from 'mongoose';
 import settings from './settings.js';
 import AuthMechanism from './auth-mechanism.js';
+import cors from 'cors';
 
 dotenv.config({
   path: path.join(process.cwd(), 'properties.env'),
@@ -28,6 +29,9 @@ const host = process.env['HOST'] ? process.env['HOST'] : '127.0.0.1';
 
 var server;
 
+app.use(cors({
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -36,6 +40,8 @@ if (mode === 'DEVELOPMENT') {
 
   app.use(function(req, _, next) {
     archivist.info(`Connection from ${req.ip} at ${new Date().toLocaleString('ru-RU')}\nRoute: ${req.route}\nURL: ${req.url}`);
+    console.log(req.body);
+    console.log(req.rawHeaders);
     next();
   });
 
@@ -56,8 +62,6 @@ if (mode === 'DEVELOPMENT') {
 }
 
 mongoose.connect(settings.db);
-
-
 app.use(mainRouter);
 
 server.listen(port, host, function() {

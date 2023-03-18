@@ -108,7 +108,7 @@ const userSchema = new Schema<IUser>({
       return (password.length > 6 && password.length < 32 && /^[a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\-\=\+\\\/\[\]\<\>\,\.\`\~\:\;\'\"\?]{6,32}$/.test(password));
     },
     activateCode: async function(value: number): Promise<boolean> {
-      if (!this.confirmationCode || !this.confirmationCode.active || this.confirmationCode.value !== value) return false;
+      if (!this.confirmationCode || !this.confirmationCode.active || this.confirmationCode.value != value) return false;
 
       this.confirmationCode.active = false;
       await this.save();
