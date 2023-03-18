@@ -39,6 +39,7 @@ if (mode === 'DEVELOPMENT') {
   app.use(function(req, _, next) {
     archivist.info(`Connection from ${req.ip} at ${new Date().toLocaleString('ru-RU')}\nRoute: ${req.route}\nURL: ${req.url}`);
     console.log(req.body);
+    console.log(req.rawHeaders);
     next();
   });
 
