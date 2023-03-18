@@ -1,0 +1,85 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0px 50px;
+    font-family: Montserrat-Reg;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.profile__avatar {
+    width: 250px;
+    height: 250px;
+    margin-right: 50px;
+    border-radius: 50%;
+}
+
+.profile__info {
+    display: flex;
+    align-items: center;
+}
+
+.profile__content {
+    margin-right: 200px;
+}
+
+.profile__name {
+    font-family: Montserrat-Bold;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.profile__mail {
+    color: #757D98;
+    margin-bottom: 50px;
+}
+
+.profile__status {
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+.profile__statistic {
+    display: flex;
+}
+
+.profile__group {
+    display: flex;
+    margin-right: 50px;
+}
+
+.profile__group:last-child {
+    margin-right: 0px;
+}
+
+.profile__icon {
+    margin-right: 10px;
+}
+
+.profile__count {
+    font-size: 24px;
+}
+
+.profile__functions {
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    justify-content: space-between;
+}
+
+.profile__btn {
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.profile__admin {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.profile__text {
+    margin-right: 10px;
+}
