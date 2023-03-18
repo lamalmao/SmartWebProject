@@ -110,3 +110,5 @@ backend/images/**.*
 !backend/images/blank.jpg
 backend/settings.json
 backend/jwt_token.txt
+
+backend/app

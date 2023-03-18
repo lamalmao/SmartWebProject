@@ -3,12 +3,13 @@ import path from 'path';
 import { IMailAuthData } from './mail.js';
 
 interface ISettings {
-  mailer: IMailAuthData
+  mailer: IMailAuthData;
   bot: {
-    apiKey: string,
-    name: string
-  },
-  db: string
+    apiKey: string;
+    name: string;
+  };
+  db: string;
+  pathToFront: string;
 }
 
 const settings: ISettings = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'settings.json')).toString());

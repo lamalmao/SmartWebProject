@@ -56,8 +56,6 @@ if (mode === 'DEVELOPMENT') {
 }
 
 mongoose.connect(settings.db);
-
-
 app.use(mainRouter);
 
 server.listen(port, host, function() {
@@ -66,3 +64,7 @@ server.listen(port, host, function() {
 
 notificationBot.launch();
 console.log('Notification bot launched');
+
+if (process.env['ENABLE_FRONT'] === 'YES') {
+  app.use(express.static(settings.pathToFront));
+}
