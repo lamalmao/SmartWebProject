@@ -3,7 +3,7 @@ import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm';
 import MInput from '../../UI-Components/MInput/MInput';
 import AuthForm from '../AuthForm/AuthForm';
 import st from './MailForm.module.css'
-const MailForm = ({...props}) => {
+const MailForm = ({handleSubmitAndRedirCodeMail,...props}) => {
     return (
        
         <AuthForm {...props}>
@@ -25,7 +25,7 @@ const MailForm = ({...props}) => {
               placeholder='Пароль'
               type='password'
               />
-               <MButtonForm>
+               <MButtonForm onClick={handleSubmitAndRedirCodeMail} >
                   РЕГИСТРАЦИЯ
                 </MButtonForm>
               
