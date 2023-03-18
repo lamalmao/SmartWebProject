@@ -5,6 +5,7 @@ import CupPic from './Images/Cup.svg'
 import WrldPic from './Images/World.svg'
 import LampPic from './Images/Lamp.svg'
 import HappPic from './Images/Happ.svg'
+import { NavLink } from 'react-router-dom';
 
 
 const MainPage = () => {
@@ -15,9 +16,9 @@ const MainPage = () => {
                     <h2 className={st.AuthAndInfoBlockHeader}>ИССЛЕДУЙТЕ МИР ВОКРУГ СЕБЯ</h2>
                     <p className={st.AuthAndInfoBlockDisc}>Определяйте местоположение по фотографиям,
                         участвуйте в викторинах и веселитесь вместе с другими игроками</p>
-                    <MButtonForm>
+                    <NavLink to='/quizselect'><MButtonForm>
                         К ИГРАМ
-                    </MButtonForm>
+                    </MButtonForm></NavLink>
                 </div>
             </div>
             <div className={st.FactsBlock}>

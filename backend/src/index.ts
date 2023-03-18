@@ -12,7 +12,7 @@ import notificationBot from './bot/index.js';
 import mongoose from 'mongoose';
 import settings from './settings.js';
 import AuthMechanism from './auth-mechanism.js';
-// import cors from 'cors';
+import cors from 'cors';
 
 dotenv.config({
   path: path.join(process.cwd(), 'properties.env'),
@@ -29,7 +29,7 @@ const host = process.env['HOST'] ? process.env['HOST'] : '127.0.0.1';
 
 var server;
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 

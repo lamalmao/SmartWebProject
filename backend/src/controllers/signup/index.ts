@@ -38,13 +38,17 @@ export default async function signupController(req: Request<{}, {}, ISignupReque
     const code = await user.genCode();
     let responseBody: ISignupResponse = {
       success: true,
-      userId: user._id
     }
+    res.cookie('userId', user._id.toString(), {
+      expires: new Date(Date.now() + 3600000)
+    });
 
     if (data.verificationMethod === 'mail') {
       await mailer.sendCode(user, code);
     } else {
-      responseBody.verificationLink = `https://t.me/${settings.bot.name}?start=${user._id.toString()}`
+      res.cookie('verificationLink', `https://t.me/${settings.bot.name}?start=${user._id.toString()}`, {
+        expires: new Date(Date.now() + 3600000)
+      });
     }
 
     res.statusCode = 200;
