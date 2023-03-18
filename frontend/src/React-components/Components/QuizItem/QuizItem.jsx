@@ -1,20 +1,19 @@
 import React from 'react';
 import st from './QuizItem.module.css'
 import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm'
-import Bpan from '../../Pages/MainPage/Images/BPan.png'
-const QuizItem = ({title, disc, quests, points}) => {
+const QuizItem = (props) => {
     return (
         <div className={st.QuizItem}>
             <div className={st.DiscPicBlock}>
-                <img className={st.PicQuizItem} src={Bpan} alt="" />
+                <img className={st.PicQuizItem} src={props.quiz.imgSRC} alt="" />
                 <div className={st.DiscTitle}>
-                    <h2 className={st.Header}>Экскурсия по Азии</h2>
-                    <p className={st.Disc}>Это пробная карточка одно из квизов и описание к нему, где можно расскаазать, о чём будет квиз.</p>
+                    <h2 className={st.Title}>{props.quiz.title}</h2>
+                    <p className={st.Disc}>{props.quiz.disc}</p>
                 </div>
             </div>
             <div className={st.InteractiveBlock}>
                 <MButtonForm>ИЗМЕНИТЬ</MButtonForm>
-                <p className={st.QuestsAndPoints}>{quests} вопросов, {points} баллов</p>
+                <p className={st.QuestsAndPoints}>{props.quiz.quests} вопросов, {props.quiz.points} баллов</p>
             </div>
         </div>
     );
