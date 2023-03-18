@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { Types } from 'mongoose';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
 const tokenFile = 'jwt_token.txt';
 const tokenLifeTime = 7 * 24 * 60 * 60 * 1000;
@@ -12,6 +12,7 @@ export interface IAuthPayload {
 
 export default abstract class AuthMechanism {
   private static cypherToken: string;
+  public static secure: boolean;
   
   public static loadToken(): void {
     const tokenFilePath = path.join(process.cwd(), tokenFile);
@@ -23,7 +24,8 @@ export default abstract class AuthMechanism {
       fs.writeFileSync(tokenFilePath, AuthMechanism.cypherToken);
     }
 
-    console.log('JWT cypher token loaded');
+    AuthMechanism.secure = process.env['MODE'] === 'PRODUCTION';
+    console.log('JWT cypher token loaded\nSecure: ' + AuthMechanism.secure);
   }
 
   public static createTokenForUser(userId: Types.ObjectId): [string, Date] {
@@ -37,8 +39,8 @@ export default abstract class AuthMechanism {
     return [token, new Date(Date.now() + tokenLifeTime)];
   }
 
-  public static getUserIdFromToken(token: string): void {
+  public static getUserIdFromToken(token: string): string | JwtPayload {
     const data = jwt.verify(token, AuthMechanism.cypherToken);
-    console.log(data);
+    return data;
   }
 }

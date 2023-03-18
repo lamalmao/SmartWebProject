@@ -6,6 +6,7 @@ const tokenFile = 'jwt_token.txt';
 const tokenLifeTime = 7 * 24 * 60 * 60 * 1000;
 export default class AuthMechanism {
     static cypherToken;
+    static secure;
     static loadToken() {
         const tokenFilePath = path.join(process.cwd(), tokenFile);
         if (fs.existsSync(tokenFilePath)) {
@@ -15,7 +16,8 @@ export default class AuthMechanism {
             AuthMechanism.cypherToken = crypto.randomBytes(256).toString('hex');
             fs.writeFileSync(tokenFilePath, AuthMechanism.cypherToken);
         }
-        console.log('JWT cypher token loaded');
+        AuthMechanism.secure = process.env['MODE'] === 'PRODUCTION';
+        console.log('JWT cypher token loaded\nSecure: ' + AuthMechanism.secure);
     }
     static createTokenForUser(userId) {
         const token = jwt.sign({
@@ -28,6 +30,6 @@ export default class AuthMechanism {
     }
     static getUserIdFromToken(token) {
         const data = jwt.verify(token, AuthMechanism.cypherToken);
-        console.log(data);
+        return data;
     }
 }

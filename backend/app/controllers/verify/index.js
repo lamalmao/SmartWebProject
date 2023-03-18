@@ -24,7 +24,7 @@ export default async function verifyCodeController(req, res) {
                 const token = AuthMechanism.createTokenForUser(user._id);
                 res.cookie('auth_token', token[0], {
                     expires: token[1],
-                    secure: true
+                    secure: AuthMechanism.secure
                 });
             }
         }
