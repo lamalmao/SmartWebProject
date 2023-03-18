@@ -6,6 +6,7 @@
 }
 
 .profile {
+    margin-top: 100px;
     display: flex;
     font-family: Montserrat-Reg;
     font-size: 16px;
