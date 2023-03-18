@@ -18,10 +18,15 @@ const Navbar = () => {
         password:'',
         email:'',
       })
+      const [codeData, setCodeData]=useState('')
 
       const inputHandler = (e) => {
         setFormMailData(prevState=>{return {...prevState,[e.target.name]:e.target.value}})
     }
+    const inputCodeHandler = (e) => {
+        setCodeData(e.target.value)
+    }
+    
 
     const [log, setLog] = useState('');
     useSelector((state)=>state.visibility.value);
@@ -36,9 +41,10 @@ const Navbar = () => {
 const username = formMailData.username;
 const password = formMailData.password;
 const email = formMailData.email;
-    var newReqest = new Request("http://laesia.site:778/signup", {
+
+    var newReqest = new Request("https://laesia.site:778/signup", {
     headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
-    mode:'no-cors',
+    mode:'cors',
     method: "POST",
     body: JSON.stringify({
       username: username,
@@ -47,11 +53,10 @@ const email = formMailData.email;
       verificationMethod:'mail'
     }),
   });
-
+  
+  var body={};
 
     const handleSubmitAndRedirCodeMail = async (e) =>{
-       
-    
         e.preventDefault()
         // const MailUserData = {
         //     username: formMailData.username,
@@ -71,24 +76,46 @@ const email = formMailData.email;
         //     console.log(res.data)
         // }
         // )
+        
         try {
             const res = await fetch(newReqest);
             console.log(res);
-
+            body = await res.json();
+            console.log(body)
         } catch (err) {
           console.log(err);
         }
     setLog('codeMail')
         };
-        
-    
+        var verifyReq = new Request("https://laesia.site:778/verify", {
+    headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
+    mode:'cors',
+    method: "POST",
+    body: JSON.stringify({
+      userId: body.userId,
+      code: codeData
+    }),
+  });
+        const handleSubmitSendCode = async (e) =>{
+            e.preventDefault()
+            try {
+                const res = await fetch(verifyReq);
+                console.log(res);
+                console.log(await res.json())
+                
+            } catch (err) {
+              console.log(err);
+            }
+            setLog('succMail')
+        }
 
     const handleSubmitAndRedirTelegramCode = (e) =>{
         e.preventDefault()
         setLog('codeTelegram')
     }
-    
+
     console.log(log)
+    console.log(body)
 
     
    
@@ -101,9 +128,9 @@ const email = formMailData.email;
                 <TgForm redirTelegram={redirTelegram} redirMail={redirMail}/>:  
                  log==='chooseMail'? <MailForm onchHandler={inputHandler} valuePassword={formMailData.password} valueMail={formMailData.email} valueUsername={formMailData.username}  handleSubmitAndRedirCodeMail={handleSubmitAndRedirCodeMail}/>:
                  log==='chooseTelegram'?<TelegramForm handleSubmitAndRedirTelegramCode={handleSubmitAndRedirTelegramCode}/>:
-                 log==='codeMail'?<CodeMailForm/>:
-                 log==='codeTelegram'?<CodeTelegramForm/>:
-                 <Message>А</Message>} 
+                 log==='codeMail'?<CodeMailForm  handleSubmitSendCode={handleSubmitSendCode} onchHandler={inputCodeHandler} codeData={codeData}/>:
+                 log==='codeTelegram'?<CodeTelegramForm/>:log==='succMail'?
+                 <Message>Вы успешно зарегестрировались</Message>:<Message>фывыфвыф</Message>} 
                 
                 </ModalWindow>
 
