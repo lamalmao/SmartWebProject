@@ -18,3 +18,8 @@
     display: flex;
     justify-content: space-between;
 }
+.BLobk{
+    display: flex;
+ flex-direction: column;
+ align-items: center;  
+}

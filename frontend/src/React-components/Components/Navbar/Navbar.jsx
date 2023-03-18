@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import st from './Navbar.module.css'
 import { useSelector,useDispatch } from 'react-redux';
 import {visible} from '../../Redux-slices/visibleSlice'
 import ModalWindow from '../../UI-Components/ModalWindow/ModalWindow'
-import QuizForm from '../QuizForm/QuizForm';
 import TgForm from '../TgForm/TgForm'
+import MailForm from '../MailForm/MailForm'
+
 const Navbar = () => {
+    const [log, setLog] = useState(' ');
     useSelector((state)=>state.visibility.value);
+    const redirTelegram = () =>{
+        setLog('chooseTelegram')
+    }
+    const redirMail = () =>{
+        setLog('chooseMail')
+    }
+    console.log(log)
     const dispatch = useDispatch();
     return (
         <header>
-                <ModalWindow><TgForm></TgForm></ModalWindow>
+                <ModalWindow>
+                {log===' ' ?
+                <TgForm redirTelegram={redirTelegram} redirMail={redirMail}/>
+                :  log==='chooseMail'? <MailForm/>: <TgForm></TgForm>} 
+                </ModalWindow>
             <div>
                 <h2 className={st.Logo}><span className={st.LogoBold}>GEO</span>GAP</h2>
             </div>
