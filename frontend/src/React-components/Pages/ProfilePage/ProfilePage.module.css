@@ -1,11 +1,17 @@
+.container {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
 .profile {
+    margin-top: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 100px 0px 50px;
     font-family: Montserrat-Reg;
     font-size: 16px;
     color: #FFFFFF;
+    margin-bottom: 50px;
 }
 
 .profile__avatar {
@@ -17,7 +23,6 @@
 
 .profile__info {
     display: flex;
-    align-items: center;
 }
 
 .profile__content {
@@ -64,7 +69,7 @@
 .profile__functions {
     display: flex;
     flex-direction: column;
-    min-height: 180px;
+    height: 100%;
     justify-content: space-between;
 }
 
