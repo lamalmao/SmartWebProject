@@ -3,6 +3,7 @@ import { ISignupRequest, ISignupResponse } from './signupData.js';
 import userModel from '../../models/user/index.js';
 import ApiMailer from '../../mail.js';
 import settings from '../../settings.js';
+import AuthMechanism from '../../auth-mechanism.js';
 
 const mailer = new ApiMailer(settings.mailer);
 
@@ -40,14 +41,16 @@ export default async function signupController(req: Request<{}, {}, ISignupReque
       success: true,
     }
     res.cookie('userId', user._id.toString(), {
-      expires: new Date(Date.now() + 3600000)
+      expires: new Date(Date.now() + 3600000),
+      secure: AuthMechanism.secure
     });
 
     if (data.verificationMethod === 'mail') {
       await mailer.sendCode(user, code);
     } else {
       res.cookie('verificationLink', `https://t.me/${settings.bot.name}?start=${user._id.toString()}`, {
-        expires: new Date(Date.now() + 3600000)
+        expires: new Date(Date.now() + 3600000),
+        secure: AuthMechanism.secure
       });
     }
 
