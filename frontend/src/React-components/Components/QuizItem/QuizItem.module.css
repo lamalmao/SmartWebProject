@@ -3,6 +3,9 @@
     align-items: center;
     font-family: Montserrat-Reg;
     color: white;
+    border: #757D98 1px solid;
+    border-radius: 5px;
+    overflow: hidden;
 }
 .PicQuizItem{
     max-width: 241px;
