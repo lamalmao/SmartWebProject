@@ -11,7 +11,7 @@ const MainPage = () => {
 
     return (
         <div >
-            <ModalWindow><QuizForm/></ModalWindow>
+            <ModalWindow><QuizForm /></ModalWindow>
             <div className={st.panoramicInfoBlock}>
                 <div className={st.AuthAndInfoBlock}>
                     <h2 className={st.AuthAndInfoBlockHeader}>ИССЛЕДУЙТЕ МИР ВОКРУГ СЕБЯ</h2>
