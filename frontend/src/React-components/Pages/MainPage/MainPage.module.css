@@ -11,7 +11,7 @@
 }
 
 .AuthAndInfoBlock {
-    color: white;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +39,6 @@
     align-items: center;
     justify-content: center;
     background-color: #3A3E4E;
-
 }
 
 .FactsBlockGroupOne,
@@ -47,14 +46,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-
 }
 
 .World,
 .Cup,
 .Lamp,
 .Happ {
-    color: white;
+    color: #FFFFFF;
     font-family: Montserrat-Reg;
     display: flex;
     flex-direction: row;
@@ -64,7 +62,6 @@
 
 .FactsBlockGroupTwo {
     margin-top: 100px;
-
 }
 
 .WorldPic,
