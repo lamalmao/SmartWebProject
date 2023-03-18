@@ -20,7 +20,7 @@ const Navbar = () => {
 
 
 
-const Navbar = () => {
+
     useSelector((state) => state.visibility.value);
 
     const dispatch = useDispatch();
@@ -33,11 +33,9 @@ const Navbar = () => {
                 <TgForm redirTelegram={redirTelegram} redirMail={redirMail}/>
                 :  log==='chooseMail'? <MailForm/>: <TgForm></TgForm>} 
                 </ModalWindow>
-            <div>
-                <h2 className={st.Logo}><span className={st.LogoBold}>GEO</span>GAP</h2>
-            </div>
+            
 
-        <div className={st.container}>
+      
           
                 <ModalWindow><TgForm></TgForm></ModalWindow>
                 <div>
@@ -53,7 +51,7 @@ const Navbar = () => {
                     <h2 onClick={() => dispatch(visible())} className={st.Reg}>ВОЙТИ</h2>
                 </div>
             
-        </div>
+       
         </header>
     );
 };
