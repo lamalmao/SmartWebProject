@@ -13,9 +13,7 @@
     color: #FFFFFF;
 }
 
-.edit__form {
-    margin-bottom: 100px;
-}
+.edit__form {}
 
 .edit__img {
     width: 240px;
@@ -207,8 +205,8 @@
     transition: 0.2s;
 }
 
-.questions__t:hover,
-.questions__:focus {
+.questions__submit:hover,
+.questions__submit:focus {
     opacity: 0.5;
     transition: 0.2s;
 }

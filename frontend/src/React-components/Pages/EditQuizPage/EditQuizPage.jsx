@@ -33,10 +33,9 @@ const EditQuizPage = () => {
                             </label>
                             <label className={st.edit__listLabel} htmlFor="">
                                 <select className={st.edit__list} name="type" required>
-                                    <option className={st.edit__option} value="word1">Cлова</option>
-                                    <option className={st.edit__option} value="word2">Слова</option>
-                                    <option className={st.edit__option} value="word3">Слова</option>
-                                    <option className={st.edit__option} value="word4">Слова</option>
+                                    <option className={st.edit__option} value="УГАДАЙКА">УГАДАЙКА</option>
+                                    <option className={st.edit__option} value="УКАЖИ ТОЧКУ">УКАЖИ ТОЧКУ</option>
+                                    <option className={st.edit__option} value="КРОССВОРД">КРОССВОРД</option>
                                 </select>
                             </label>
                         </div>
