@@ -21,3 +21,10 @@
 .SearchBlockDisc{
     width: 50%;
 }
+.Control{
+    width: 113%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}

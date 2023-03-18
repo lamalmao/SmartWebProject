@@ -5,13 +5,11 @@ import CupPic from './Images/Cup.svg'
 import WrldPic from './Images/World.svg'
 import LampPic from './Images/Lamp.svg'
 import HappPic from './Images/Happ.svg'
-import ModalWindow from '../../UI-Components/ModalWindow/ModalWindow'
-import QuizForm from '../../Components/QuizForm/QuizForm';
-const MainPage = () => {
 
+
+const MainPage = () => {
     return (
         <div >
-            <ModalWindow><QuizForm /></ModalWindow>
             <div className={st.panoramicInfoBlock}>
                 <div className={st.AuthAndInfoBlock}>
                     <h2 className={st.AuthAndInfoBlockHeader}>ИССЛЕДУЙТЕ МИР ВОКРУГ СЕБЯ</h2>

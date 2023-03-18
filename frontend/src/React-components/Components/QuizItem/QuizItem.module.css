@@ -1,11 +1,16 @@
 .QuizItem{
+    margin: 25px;
+    min-width: 1100px;
     display: flex;
+    font-size: 16px;
     align-items: center;
     font-family: Montserrat-Reg;
     color: white;
     border: #757D98 1px solid;
     border-radius: 5px;
     overflow: hidden;
+    padding-right: 10px;
+    justify-content: space-between;
 }
 .PicQuizItem{
     max-width: 241px;
@@ -14,9 +19,26 @@
     display: flex;
 }
 .DiscTitle{
+    padding-top:5px;
+    margin-left: 24px;
     display: flex;
     flex-direction: column;
     max-width:400px;
     text-align: left;
     align-items: flex-start;
+}
+.Title{
+    font-family: Montserrat-Bold;
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+.InteractiveBlock{
+    min-height: 90px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    align-items: flex-end;
+    justify-content: space-between;
+    
 }
