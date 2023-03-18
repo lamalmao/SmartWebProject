@@ -13,3 +13,13 @@
 .MInputCl::placeholder{
     color: #757D98;
 }
+.MInputCl::-webkit-outer-spin-button,
+.MInputCl::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+ 
+/* Firefox */
+.MInputCl[type=number] {
+  -moz-appearance:textfield;
+}

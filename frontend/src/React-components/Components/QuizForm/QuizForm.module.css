@@ -1,0 +1,21 @@
+.Label{
+    font-family:Montserrat-reg;
+    color:white;
+    font-size:17pt;
+    text-align:center; 
+    margin-bottom:25px;
+     width:80%;
+}
+.Span{
+    font-family:Montserrat-bold; 
+    background-color:#3A3E4E;
+    background-image:linear-gradient(90deg, #03DCFE 0%, #3967FF 102.46%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.BottomForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 95%;
+}

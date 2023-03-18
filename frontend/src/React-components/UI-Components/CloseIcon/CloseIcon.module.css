@@ -3,3 +3,6 @@
     height: 14px;
     align-self: flex-end;
 }
+.CloseIcon:hover{
+    opacity: 50%;
+}
