@@ -15,7 +15,7 @@ header{
 .LinksInside{
     padding: 0px 20px;
     font-family: Montserrat-Reg;
-    font-size: 14pt;
+    font-size: 16px;
     letter-spacing: 1px;
     cursor: pointer;
 }
@@ -23,8 +23,10 @@ header{
     font-family: Montserrat-Black;
     letter-spacing: 3px;
     cursor: pointer;
+    font-size: 16px;
 }
 .Logo{
+    font-size: 16px;
     cursor: pointer;
     font-family: Montserrat-Reg;
     letter-spacing: 3px;

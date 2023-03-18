@@ -1,0 +1,23 @@
+.MainQuizPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.SearchBlock{
+    margin-top: 100px;
+    font-family: Montserrat-Reg;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.SearchBlockHeader{
+    font-family: Montserrat-Bold;
+}
+.SearchBlockDisc{
+    width: 50%;
+}

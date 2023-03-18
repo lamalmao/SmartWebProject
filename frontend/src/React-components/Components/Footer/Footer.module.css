@@ -3,13 +3,17 @@ footer{
     justify-content: space-around;
     padding: 20px;
     background-color: #282B36;
+   
+    
 }
 .MainInfo, .Section, .Contacts{
-    width: 15%;
+  
+    width: 18%;
     color: white;
     font-family: Montserrat-Reg;
 }
 .SectionList, .ContactsList{
+   
     list-style-type: none;
 
 }
@@ -19,8 +23,11 @@ footer{
 }
 .MainInfoTxt, .SectionList, .ContactsList{
     padding-top: 10px;
+
+    
 }
 .SectionEl, .ContactsEl{
+    
     padding-bottom: 10px;
 }
 .SectionEl{
@@ -32,6 +39,7 @@ footer{
 }
 .ContactsHeader,.SectionHeader,.MainInfoHeader{
     letter-spacing: 3px;
+    font-size: 16px;
 }
 .ContactsHeader,.SectionHeader{
     font-family: Montserrat-Bold;
