@@ -27,6 +27,7 @@ export default async function getGameController(req: Request<{}, {}, IGameGetReq
       }
 
       const userId: Types.ObjectId = tokenData['userid'];
+      console.log(userId);
       const user = await userModel.findById(userId, {
         role: 1
       });
