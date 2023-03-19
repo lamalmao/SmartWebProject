@@ -15,25 +15,25 @@ import {GET_REGION} from 'mapbox-gl'
 
 const CrosswordPage = () => {
 
-    const useFetch = () => {
+    // const useFetch = () => {
        
-        const [data, setData] = useState(null)
+    //     const [data, setData] = useState(null)
         
-        useEffect(() => {
-          fetch('https://our-api.com/polygon')
-            .then(response => response.json())
-            .then(setData)
-            .catch(e => {
-              console.error(e)
-            })
-        }, [setData])
+    //     useEffect(() => {
+    //       fetch('https://our-api.com/polygon')
+    //         .then(response => response.json())
+    //         .then(setData)
+    //         .catch(e => {
+    //           console.error(e)
+    //         })
+    //     }, [setData])
         
-        return { data }
-      }
+    //     return { data }
+    //   }
       
       const BaseMap = () => {
         // Use the hook to fetch data
-    const { data } = useFetch(GET_REGION);
+    // const { data } = useFetch(GET_REGION); 00000000000000
     // Map instance
     const map = useRef(null);
         // DOM element
@@ -58,10 +58,10 @@ const CrosswordPage = () => {
             const sourceId = 'source-region'
       
             // Add a data source containing GeoJSON data
-            map.addSource(sourceId, {
-              'type': 'geojson',
-              'data': data.region // our data from Apollo
-            });
+            // map.addSource(sourceId, {
+            //   'type': 'geojson',
+            //   'data': data.region // our data from Apollo
+            // });
         
             // Add a new layer to visualize the polygon
             
