@@ -10,7 +10,7 @@ export default async function profileAccessController(req: Request<{}, {}, IProf
   try {
     const data = req.body;
     
-    const rawToken: string = req.cookies['auth_token'];
+    const rawToken: string = req.cookies['auth_token'] ? req.cookies['auth_token'] : req.body.token;
     if (!rawToken) {
       throw new Error('Auth token not provided');
     }
