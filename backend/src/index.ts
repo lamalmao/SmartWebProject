@@ -68,13 +68,6 @@ if (mode === 'DEVELOPMENT') {
 mongoose.connect(settings.db);
 app.use('/api', mainRouter);
 
-server.listen(port, host, function() {
-  console.log(`Server running in ${mode} mode at ${host}:${port}`);
-});
-
-notificationBot.launch();
-console.log('Notification bot launched');
-
 if (process.env['RENDER'] === 'YES') {
   const renderPath = settings['renderPath'];
   if (!renderPath) {
@@ -83,4 +76,13 @@ if (process.env['RENDER'] === 'YES') {
   }
 
   app.use('/', express.static(renderPath));
+  console.log('Render on.\nPath: ' + renderPath);
 }
+
+server.listen(port, host, function() {
+  console.log(`Server running in ${mode} mode at ${host}:${port}`);
+});
+
+notificationBot.launch();
+console.log('Notification bot launched');
+
