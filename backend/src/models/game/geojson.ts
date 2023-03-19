@@ -14,16 +14,14 @@ export const Feature = new Schema<IFeature>({
     default: {}
   },
   geometry: {
+    coordinates: {
+      type: [],
+      required: true
+    },
     type: {
-      coordinates: {
-        type: [],
-        required: true
-      },
-      type: {
-        type: String,
-        required: true,
-        enum: ['Point', 'LineString', 'Polygon'],
-      }
+      type: String,
+      required: true,
+      enum: ['Point', 'LineString', 'Polygon'],
     }
   },
   id: {
