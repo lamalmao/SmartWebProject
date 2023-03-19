@@ -6,6 +6,7 @@ import QuizSelectPage from '../Pages/QuizSelectPage/QuizSelectPage';
 import ProfilePage from '../Pages/ProfilePage/ProfilePage';
 import EditQuizPage from '../Pages/EditQuizPage/EditQuizPage';
 import CrosswordPage from '../Pages/CrosswordPage/CrosswordPage';
+import PointGamePage from '../Pages/PointGamePage/PointGamePage';
 
 
 const AppRoutes = () => {
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path='/account' element={<ProfilePage />} />
         <Route path='/edit' element={<EditQuizPage />} />
         <Route path='/crossword' element={<CrosswordPage />} />
+        <Route path='/point' element={<PointGamePage />} />
         <Route />
       </Route>
     </Routes>
