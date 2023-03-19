@@ -1,24 +1,26 @@
-.MInputCl{
-    background-color: #3A3E4E;
-    width: 70%;
-    min-width: 344px;
-    height: 35px;
-    padding: 0 20px;
-    color: white;
-    border-radius: 5px;
-    border: #757D98 1px solid;
-    font-family: Montserrat-Reg;
-    font-size: 12pt;
+.MInputCl {
+  background-color: #3A3E4E;
+  width: 70%;
+  min-width: 344px;
+  height: 35px;
+  padding: 0 20px;
+  color: #FFFFFF;
+  border-radius: 5px;
+  border: #757D98 1px solid;
+  font-family: Montserrat-Reg;
+  font-size: 12px;
 }
-.MInputCl::placeholder{
-    color: #757D98;
+
+.MInputCl::placeholder {
+  color: #757D98;
 }
+
 .MInputCl::-webkit-outer-spin-button,
 .MInputCl::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
- 
+
 .MInputCl[type=number] {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }

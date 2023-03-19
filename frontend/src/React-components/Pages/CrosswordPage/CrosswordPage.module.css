@@ -51,13 +51,13 @@
 }
 
 .interface__text {
-    font-family: Montserrat;
+    font-family: Montserrat-Reg;
     font-size: 16px;
     color: #FFFFFF;
 }
 
 .interface__current {
-    font-family: Montserrat;
+    font-family: Montserrat-Reg;
     font-size: 24px;
     color: #FFFFFF;
     margin-right: 10px;
@@ -70,7 +70,7 @@
 }
 
 .interface__paragraph {
-    font-family: Montserrat;
+    font-family: Montserrat-Reg;
     font-size: 16px;
     color: #FFFFFF;
     max-width: 350px;

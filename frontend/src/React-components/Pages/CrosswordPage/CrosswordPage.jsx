@@ -6,6 +6,7 @@ import time from './Images/time.png'
 import place from './Images/place.png'
 import award from './Images/award.png'
 
+
 const CrosswordPage = () => {
     return (
         <div className=''>
