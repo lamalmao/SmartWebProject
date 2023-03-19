@@ -1,6 +1,23 @@
 .map {
     width: 100%;
     display: block;
+    position: relative;
+}
+
+.map__text {
+    width: 180px;
+    font-family: Montserrat-Bold;
+    font-size: 32px;
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 90px);
+    text-align: center;
+    background: linear-gradient(90deg, #03DCFE 0%, #3A66FF 100%, #3A66FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0px 0px 25px #000000;
+    z-index: 1;
 }
 
 .interface {
@@ -27,6 +44,22 @@
     display: flex;
     flex-direction: column;
     margin-right: 50px;
+}
+
+.interface__form {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.interface__input {
+    margin-right: 25px;
+    padding: 9px 13px;
+    font-family: Montserrat-Reg;
+    font-size: 14px;
+    color: #FFFFFF;
+    border: 1px solid #757D98;
+    border-radius: 5px;
+    background-color: #3A3E4E;
 }
 
 .interface__score {
@@ -71,9 +104,9 @@
 
 .interface__paragraph {
     font-family: Montserrat-Reg;
+    max-width: 600px;
     font-size: 16px;
     color: #FFFFFF;
-    max-width: 350px;
 }
 
 .AuthAndInfoBlockHeader {
@@ -111,7 +144,7 @@
 .Cup,
 .Lamp,
 .Happ {
-    color: white;
+    color: #FFFFFF;
     font-family: Montserrat-Reg;
     display: flex;
     flex-direction: row;

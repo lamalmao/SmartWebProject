@@ -34,7 +34,13 @@ header {
     transition: 0.2s;
 }
 
-.Reg,
+.Reg {
+    font-family: Montserrat-Bold;
+    font-size: 16px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
 .LogoBold {
     font-family: Montserrat-Black;
     letter-spacing: 3px;

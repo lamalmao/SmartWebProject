@@ -10,21 +10,19 @@ import { NavLink } from 'react-router-dom';
 
 const MainPage = () => {
     return (
-        <div >
+        <div>
             <div className={st.panoramicInfoBlock}>
                 <div className={st.AuthAndInfoBlock}>
                     <h2 className={st.AuthAndInfoBlockHeader}>ИССЛЕДУЙТЕ МИР ВОКРУГ СЕБЯ</h2>
                     <p className={st.AuthAndInfoBlockDisc}>Определяйте местоположение по фотографиям,
                         участвуйте в викторинах и веселитесь вместе с другими игроками</p>
-                    <NavLink to='/quizselect'><MButtonForm>
+                    <NavLink to='/quizselect'><MButtonForm style={{ fontSize: "24px", padding: "10px 30px", height: 'fit-content' }}>
                         К ИГРАМ
                     </MButtonForm></NavLink>
                 </div>
             </div>
             <div className={st.FactsBlock}>
-
                 <div className={st.FactsBlockGroupOne}>
-
                     <div className={st.World}>
                         <img src={WrldPic} alt="" className={st.WorldPic} />
                         <div className={st.WorldInfo}>
@@ -32,7 +30,6 @@ const MainPage = () => {
                             <p className={st.WorldInfoDisc}>Исследуйте карту мира и проверяйте свои познания в географии.</p>
                         </div>
                     </div>
-
                     <div className={st.Lamp}>
                         <img src={LampPic} alt="" className={st.LampPic} />
                         <div className={st.LampInfo}>
@@ -41,9 +38,7 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className={st.FactsBlockGroupTwo}>
-
                     <div className={st.Cup}>
                         <img src={CupPic} alt="" className={st.CupPic} />
                         <div className={st.CupInfo}>
@@ -51,7 +46,6 @@ const MainPage = () => {
                             <p className={st.CupInfoDisc}>Друзья или незнакомцы могут стать вашими соперниками.</p>
                         </div>
                     </div>
-
                     <div className={st.Happ}>
                         <img src={HappPic} alt="" className={st.HappPic} />
                         <div className={st.HappInfo}>
@@ -59,11 +53,9 @@ const MainPage = () => {
                             <p className={st.HappInfoDisc}>Играйте с друзьями и просто хорошо проводите время в нашей игре.</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     );
 };
 

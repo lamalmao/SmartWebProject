@@ -1,5 +1,5 @@
 import React from 'react';
-import st from './CrosswordPage.module.css';
+import st from './PointGamePage.module.css';
 import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm';
 import map from './Images/map.png';
 import time from './Images/time.png';
@@ -7,10 +7,11 @@ import place from './Images/place.png';
 import award from './Images/award.png';
 
 
-const CrosswordPage = () => {
+const PointGamePage = () => {
     return (
         <div className=''>
             <section className={st.map}>
+                <div className={st.map__text}>НЕВЕРНО!</div>
                 <img src={map} alt="Map of the World" className={st.map} />
             </section>
             <section className={st.interface}>
@@ -33,7 +34,7 @@ const CrosswordPage = () => {
                     </div>
                     <div className={st.interface__block}>
                         <p className={st.interface__paragraph}>
-                            Необходимо выбрать на карте правильный географический объект из числа предложенных. Число попыток ограничено.
+                            Необходимо указать на карте точку, наиболее близкую к правильному местоположению. Количество баллов обратно пропорционально расстоянию до правильного местоположения.
                         </p>
                     </div>
                 </div>
@@ -49,4 +50,6 @@ const CrosswordPage = () => {
     );
 };
 
-export default CrosswordPage;
+PointGamePage.propTypes = {};
+
+export default PointGamePage;
