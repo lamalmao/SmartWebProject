@@ -23,12 +23,12 @@ export const Feature = new Schema<IFeature>({
         type: String,
         required: true,
         enum: ['Point', 'LineString', 'Polygon'],
-      },
-      id: {
-        type: Number,
-        required: true
       }
     }
+  },
+  id: {
+    type: Number,
+    required: true
   }
 });
 

@@ -9,6 +9,6 @@ export interface IFeature {
   geometry: {
     coordinates: Array<[number, number]>;
     type: string;
-    id: number
   };
+  id: number
 }
