@@ -86,14 +86,21 @@ const email = formMailData.email;
           console.log(err);
         }
     setLog('codeMail')
+   body = document.cookie = `userId=${body.userId}`
         };
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+          }
         var verifyReq = new Request("https://laesia.site:778/api/verify", {
     headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
     mode:'cors',
     method: "POST",
     body: JSON.stringify({
-      userId: body.userId,
-      code: codeData
+      userId: getCookie('userId'),
+      code: codeData,
+      activate:'true'
     }),
   });
         const handleSubmitSendCode = async (e) =>{
