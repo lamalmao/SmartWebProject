@@ -3,6 +3,7 @@ import { IGameCreateRequest, IGameCreateResponse } from './createData.js';
 import { IGame } from '../../../models/game/game.d.js';
 import { gameModel } from '../../../models/game/game.js';
 import logger from '../../../logger.js';
+import { Types } from 'mongoose';
 
 export default async function createGameController(req: Request<{}, {}, IGameCreateRequest>, res: Response<IGameCreateResponse>) {
   try {
@@ -11,7 +12,9 @@ export default async function createGameController(req: Request<{}, {}, IGameCre
       throw new Error('data not provided');
     }
 
-    const newGame = new gameModel(gameData);
+    const userId: Types.ObjectId = res.locals['userId'];
+    let newGame = new gameModel(gameData);
+    newGame.creator = userId;
     await newGame.validate();
     
     newGame.isNew = true;

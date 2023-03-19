@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { IAuthCheckRequest, IAuthCheckResponse } from './authCheckData.js';
 import AuthMechanism from '../../auth-mechanism.js';
+import { Types } from 'mongoose';
+import userModel from '../../models/user/index.js';
 
 export default async function authCheckController(req: Request<{}, {}, IAuthCheckRequest>, res: Response<IAuthCheckResponse>, next: Function) {
   try {
@@ -15,7 +17,18 @@ export default async function authCheckController(req: Request<{}, {}, IAuthChec
     if (typeof check === 'string') {
       throw new Error('неверный токен');
     }
+    const userId: Types.ObjectId = check['userId'];
+    const user = await userModel.findOne({
+      _id: userId
+    }, {
+      activated: 1
+    });
 
+    if (!user || !user.activated) {
+      throw new Error('Нет доступа');
+    } 
+
+    res.locals['userId'] = userId;
     next();
   } catch (e) {
     res.statusCode = 401;

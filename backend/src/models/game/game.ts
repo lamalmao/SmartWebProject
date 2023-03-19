@@ -1,6 +1,7 @@
 import { Schema, SchemaTypes, Types, model } from 'mongoose';
 import { IGame, IQuest } from './game.d.js'
 import userModel from '../user/index.js';
+import { FeatureCollection } from './geojson.js';
 
 const QuestSchema = new Schema<IQuest>({
   title: {
@@ -15,6 +16,10 @@ const QuestSchema = new Schema<IQuest>({
     type: String,
     required: true,
     enum: ['guesser', 'point', 'crossword']
+  },
+  geoObjects: {
+    type: FeatureCollection,
+    required: true
   }
 });
 

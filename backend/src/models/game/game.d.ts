@@ -3,8 +3,8 @@ import { IFeatureCollection } from './geojson.d.js';
 
 export interface IGame {
   title: string;
-  creator: Types.ObjectId;
-  created: Date;
+  creator?: Types.ObjectId;
+  created?: Date;
   description: string;
   hidden: boolean;
   quests: Array<IQuest>;
