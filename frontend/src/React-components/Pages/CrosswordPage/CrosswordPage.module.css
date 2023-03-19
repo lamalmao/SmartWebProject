@@ -1,6 +1,7 @@
 .map {
     width: 100%;
     display: block;
+    min-height: 600px;
 }
 
 .interface {

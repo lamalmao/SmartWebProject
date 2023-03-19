@@ -42,7 +42,7 @@ const username = formMailData.username;
 const password = formMailData.password;
 const email = formMailData.email;
 
-    var newReqest = new Request("https://laesia.site:778/signup", {
+    var newReqest = new Request("http://laesia.site/api/signup", {
     headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
     mode:'cors',
     method: "POST",
@@ -87,7 +87,7 @@ const email = formMailData.email;
         }
     setLog('codeMail')
         };
-        var verifyReq = new Request("https://laesia.site:778/verify", {
+        var verifyReq = new Request("http://laesia.site/api/verify", {
     headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
     mode:'cors',
     method: "POST",
@@ -145,7 +145,7 @@ const email = formMailData.email;
                 <ul className={st.links}>
                     <li className={st.LinksInside}>УГАДАЙКА</li>
                     <li className={st.LinksInside}>УКАЖИ ТОЧКУ</li>
-                    <li className={st.LinksInside}>КРОССВОРД</li>
+                    <NavLink to='/crossword' style={{textDecoration:'none', color:'white'}}><li className={st.LinksInside}>КРОССВОРД</li></NavLink>
                 </ul>
                 <div>
                     <h2 onClick={() => dispatch(visible())} className={st.Reg}>ВОЙТИ</h2>
