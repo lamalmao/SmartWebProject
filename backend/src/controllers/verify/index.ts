@@ -18,6 +18,7 @@ export default async function verifyCodeController(req: Request<{}, {}, IVerifyD
     if (!user) {
       throw new Error('Пользователь не найден');
     }
+    var resToken: string | undefined;
 
     const result = await user.activateCode(data.code);
     if (data.activate) {
@@ -30,6 +31,7 @@ export default async function verifyCodeController(req: Request<{}, {}, IVerifyD
         await user.save();
 
         const token = AuthMechanism.createTokenForUser(user._id);
+        resToken = token[0];
         res.cookie('auth_token', token[0], {
           expires: token[1],
           secure: AuthMechanism.secure
@@ -40,7 +42,8 @@ export default async function verifyCodeController(req: Request<{}, {}, IVerifyD
     res.statusCode = 200;
     res.send({
       success: result,
-      message: result ? undefined : 'Код неверен или уже использован'
+      message: result ? undefined : 'Код неверен или уже использован',
+      token: resToken
     })
   } catch (e) {
     logger.error(e.message);

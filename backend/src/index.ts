@@ -22,9 +22,13 @@ dotenv.config({
 AuthMechanism.loadToken();
 
 const app = express();
-const port = 778;
+var port = Number(process.env['PORT']);
 
 const mode: string = process.env['MODE'] ? process.env['MODE'] : 'PRODUCTION';
+if (mode === 'DEVELOPMENT') {
+  port = 80;
+}
+
 const host = process.env['HOST'] ? process.env['HOST'] : '127.0.0.1';
 
 var server;
@@ -62,7 +66,7 @@ if (mode === 'DEVELOPMENT') {
 }
 
 mongoose.connect(settings.db);
-app.use(mainRouter);
+app.use('/api', mainRouter);
 
 server.listen(port, host, function() {
   console.log(`Server running in ${mode} mode at ${host}:${port}`);
@@ -70,3 +74,13 @@ server.listen(port, host, function() {
 
 notificationBot.launch();
 console.log('Notification bot launched');
+
+if (process.env['RENDER'] === 'YES') {
+  const renderPath = settings['renderPath'];
+  if (!renderPath) {
+    console.log('Render path is not provided');
+    process.exit(-1);
+  }
+
+  app.use('/', express.static(renderPath));
+}

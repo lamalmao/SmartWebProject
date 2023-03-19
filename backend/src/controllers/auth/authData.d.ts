@@ -6,4 +6,5 @@ export interface IAuthRequest {
 export interface IAuthResponse {
   success: boolean;
   message?: string;
+  token?: string;
 }

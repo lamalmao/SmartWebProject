@@ -34,7 +34,8 @@ export default async function authController(req: Request<{}, {}, IAuthRequest>,
     });
 
     res.json({
-      success: true
+      success: true,
+      token: token[0]
     });
   } catch (e) {
     logger.error(e.message);

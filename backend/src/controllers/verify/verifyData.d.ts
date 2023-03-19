@@ -8,5 +8,6 @@ export interface IVerifyDataRequest {
 
 export interface IVerifyDataResponse {
   success: boolean;
+  token?: string;
   message?: string;
 }
