@@ -34,10 +34,8 @@ export default async function getGameController(req: Request<{}, {}, IGameGetReq
       if (!user) {
         throw new Error('пользователь не найден');
       }
-
-      console.log(game.creator, userId);
-
-      if (game.creator !== userId && user.role !== ROLES.ADMIN) {
+      
+      if (game.creator != userId && user.role !== ROLES.ADMIN) {
         throw new Error('игра скрыта');
       }
     }
