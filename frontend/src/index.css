@@ -22,3 +22,6 @@
 body {
 	background-color: #3A3E4E;
 }
+div.mapboxgl-ctrl-attrib-inner{
+	display: none;
+}

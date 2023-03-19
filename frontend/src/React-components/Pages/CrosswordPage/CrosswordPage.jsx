@@ -1,18 +1,78 @@
-import React from 'react';
-import st from './CrosswordPage.module.css';
-import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm';
-import map from './Images/map.png';
-import time from './Images/time.png';
-import place from './Images/place.png';
-import award from './Images/award.png';
+import React, { useEffect, useRef, useState } from 'react';
+import st from './CrosswordPage.module.css'
+import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm'
+import time from './Images/time.png'
+import place from './Images/place.png'
+import award from './Images/award.png'
+import mapboxgl from 'mapbox-gl';
+import {GET_REGION} from 'mapbox-gl'
+
+
+
+
+
 
 
 const CrosswordPage = () => {
+
+    const useFetch = () => {
+       
+        const [data, setData] = useState(null)
+        
+        useEffect(() => {
+          fetch('https://our-api.com/polygon')
+            .then(response => response.json())
+            .then(setData)
+            .catch(e => {
+              console.error(e)
+            })
+        }, [setData])
+        
+        return { data }
+      }
+      
+      const BaseMap = () => {
+        // Use the hook to fetch data
+    const { data } = useFetch(GET_REGION);
+    // Map instance
+    const map = useRef(null);
+        // DOM element
+        const mapContainer = useRef(null);
+        
+        // Main logic - init the map and add the event
+        useEffect(() => {
+          if (map.current) {
+            return; // initialize map only once
+          }
+      
+          mapboxgl.accessToken = 'pk.eyJ1IjoibGFlc2lhIiwiYSI6ImNsZmQxeDAybTBxNXMzeXBnaXM5NXFzdm8ifQ.PUHgx-hDuKjulOhRWlD8sQ';
+          map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/laesia/clfd20gds00lj01moej8avfmb', // style URL (it's Mapbox's core style)
+            center: [-68.137343, 45.137451], // starting position
+            zoom: 5 // starting zoom
+          });
+      
+          // Handle event
+          map.current.on('load', () => {
+            const sourceId = 'source-region'
+      
+            // Add a data source containing GeoJSON data
+            map.addSource(sourceId, {
+              'type': 'geojson',
+              'data': data.region // our data from Apollo
+            });
+        
+            // Add a new layer to visualize the polygon
+            
+          });
+        });
+        return <div ref={mapContainer} className={st.map}></div>
+      }
+
     return (
         <div className=''>
-            <section className={st.map}>
-                <img src={map} alt="Map of the World" className={st.map} />
-            </section>
+            <BaseMap/>
             <section className={st.interface}>
                 <div className={st.interface__container}>
                     <div className={st.interface__block}>
