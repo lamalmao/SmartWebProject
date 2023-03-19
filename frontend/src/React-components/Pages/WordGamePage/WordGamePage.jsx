@@ -1,5 +1,5 @@
 import React from 'react';
-import st from './CrosswordPage.module.css';
+import st from './WordGamePage.module.css';
 import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm';
 import map from './Images/map.png';
 import time from './Images/time.png';
@@ -7,10 +7,11 @@ import place from './Images/place.png';
 import award from './Images/award.png';
 
 
-const CrosswordPage = () => {
+const WordGamePage = () => {
     return (
         <div className=''>
             <section className={st.map}>
+                <div className={st.map__text}>ВЕРНО!</div>
                 <img src={map} alt="Map of the World" className={st.map} />
             </section>
             <section className={st.interface}>
@@ -22,18 +23,18 @@ const CrosswordPage = () => {
                         </div>
                     </div>
                     <div className={st.interface__block}>
-                        <div className={st.interface__item}>
-                            <img src={place} alt="Place" className={st.interface__icon} />
-                            <div className={st.interface__text}>Turkey</div>
-                        </div>
-                        <div className={st.interface__item}>
-                            <img src={time} alt="Time" className={st.interface__icon} />
-                            <div className={st.interface__text}>12:02</div>
-                        </div>
-                    </div>
-                    <div className={st.interface__block}>
+                        <form action="/" className={st.interface__form}>
+                            <label className={st.interface__label} htmlFor="">
+                                <input className={st.interface__input} type="text" placeholder='Название страны' />
+                            </label>
+                            <MButtonForm style={{ letterSpacing: "normal", marginRight: "50px", }}>ПОДТВЕРДИТЬ</MButtonForm>
+                            <div className={st.interface__item}>
+                                <img src={time} alt="Time" className={st.interface__icon} />
+                                <div className={st.interface__text}>12:02</div>
+                            </div>
+                        </form>
                         <p className={st.interface__paragraph}>
-                            Необходимо выбрать на карте правильный географический объект из числа предложенных. Число попыток ограничено.
+                            Ввести в текстовое поле текст, соответствующий подсвеченному на карте объекту. Заданием могут быть предусмотрены несколько вариантов допустимого ответа.
                         </p>
                     </div>
                 </div>
@@ -42,11 +43,13 @@ const CrosswordPage = () => {
                         <div className={st.interface__current}>1 / </div>
                         <div className={st.interface__total}>15</div>
                     </div>
-                    <MButtonForm>ПРОПУСТИТЬ</MButtonForm>
+                    <MButtonForm style={{ letterSpacing: "normal" }}>ПРОПУСТИТЬ</MButtonForm>
                 </div>
             </section>
         </div>
     );
 };
 
-export default CrosswordPage;
+WordGamePage.propTypes = {};
+
+export default WordGamePage;

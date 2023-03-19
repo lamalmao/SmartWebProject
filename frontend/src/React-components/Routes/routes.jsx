@@ -7,6 +7,7 @@ import ProfilePage from '../Pages/ProfilePage/ProfilePage';
 import EditQuizPage from '../Pages/EditQuizPage/EditQuizPage';
 import CrosswordPage from '../Pages/CrosswordPage/CrosswordPage';
 import PointGamePage from '../Pages/PointGamePage/PointGamePage';
+import WordGamePage from '../Pages/WordGamePage/WordGamePage';
 
 
 const AppRoutes = () => {
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path='/edit' element={<EditQuizPage />} />
         <Route path='/crossword' element={<CrosswordPage />} />
         <Route path='/point' element={<PointGamePage />} />
+        <Route path='/word' element={<WordGamePage />} />
         <Route />
       </Route>
     </Routes>

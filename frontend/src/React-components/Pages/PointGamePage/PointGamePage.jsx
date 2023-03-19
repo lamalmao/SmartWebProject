@@ -6,6 +6,7 @@ import time from './Images/time.png';
 import place from './Images/place.png';
 import award from './Images/award.png';
 
+
 const PointGamePage = () => {
     return (
         <div className=''>
@@ -33,7 +34,7 @@ const PointGamePage = () => {
                     </div>
                     <div className={st.interface__block}>
                         <p className={st.interface__paragraph}>
-                            Необходимо указать на карте точку, наиболее близкую к правильному местоположению. Количество баллов обратно пропорционально расстоянию до правильного местоположения
+                            Необходимо указать на карте точку, наиболее близкую к правильному местоположению. Количество баллов обратно пропорционально расстоянию до правильного местоположения.
                         </p>
                     </div>
                 </div>
