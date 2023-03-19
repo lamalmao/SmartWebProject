@@ -42,7 +42,7 @@ const username = formMailData.username;
 const password = formMailData.password;
 const email = formMailData.email;
 
-    var newReqest = new Request("http://laesia.site/api/signup", {
+    var newReqest = new Request("https://laesia.site/api/signup", {
     headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
     mode:'cors',
     method: "POST",
@@ -87,7 +87,7 @@ const email = formMailData.email;
         }
     setLog('codeMail')
         };
-        var verifyReq = new Request("http://laesia.site/api/verify", {
+        var verifyReq = new Request("https://laesia.site/api/verify", {
     headers: {'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'},
     mode:'cors',
     method: "POST",
