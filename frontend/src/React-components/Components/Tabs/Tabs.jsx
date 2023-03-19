@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import st from "../Tabs/Tabs.module.css"
 import FirstTab from "../AllTabs/FirstTab";
 import SecondTab from "../AllTabs/SecondTab";
+import MButtonForm from '../../UI-Components/MButtonForm/MButtonForm';
 
 const Tabs = () => {
     const [activeTab, setActiveTab] = useState("tab1");
@@ -14,14 +15,15 @@ const Tabs = () => {
                     className={activeTab === "tab1" ? st.active : ""}
                     onClick={handleTab1}
                 >
-                    Tab 1
+                    СОЗДАННЫЕ
                 </li>
                 <li
                     className={activeTab === "tab2" ? st.active : ""}
                     onClick={handleTab2}
                 >
-                    Tab 2
+                    ПРОЙДЕННЫЕ
                 </li>
+                <MButtonForm>СОЗДАТЬ</MButtonForm>
             </ul>
 
             <div className={st.outletoutlet}>
