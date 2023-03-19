@@ -7,7 +7,7 @@ export interface IFeature {
   type: string; // Always 'Feature'
   properties: Object;
   geometry: {
-    coordinates: Array<[number, number]>;
+    coordinates: Array<any>;
     type: string;
   };
   id: number
