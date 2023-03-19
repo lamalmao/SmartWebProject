@@ -15,4 +15,5 @@ export interface IQuest {
   description: string;
   type: string;
   geoObjects: IFeatureCollection;
+  answer?: Array<any>;
 }

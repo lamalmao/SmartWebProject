@@ -20,6 +20,10 @@ const QuestSchema = new Schema<IQuest>({
   geoObjects: {
     type: FeatureCollection,
     required: true
+  },
+  answer: {
+    type: [],
+    required: true
   }
 });
 
