@@ -7,6 +7,7 @@ import MCheckbox from '../../UI-Components/MCheckbox/MCheckbox';
 import AvatarPic from './Images/avatar.svg';
 import WreathPic from './Images/wreath.svg';
 import WrenchPic from './Images/wrench.svg';
+import Tabs from '../../Components/Tabs/Tabs';
 
 
 const ProfilePage = () => {
@@ -40,6 +41,7 @@ const ProfilePage = () => {
                     </div>
                 </div>
             </article>
+            <Tabs />
         </div>
     );
 };

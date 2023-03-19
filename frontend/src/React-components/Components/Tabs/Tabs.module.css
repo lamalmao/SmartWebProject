@@ -1,0 +1,35 @@
+.Tabs {
+    max-width: 1140px;
+    height: auto;
+    color: #E8F0F2;
+    @media (max-width: 769px) {
+      padding: 2rem 0;
+    }
+  
+  }
+
+  ul.nav {
+    margin: 0 auto 50px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: fit-content;
+  }
+
+  ul.nav li {
+    font-family: Montserrat-Reg;
+    padding-bottom: 5px;
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  ul.nav li:hover {
+    font-family: Montserrat-Bold;
+  }
+
+  ul.nav li.active {
+    border-bottom: 5px solid #1FA1FF;
+    font-family: Montserrat-Bold;
+  }
+  

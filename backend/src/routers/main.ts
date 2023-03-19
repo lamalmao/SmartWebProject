@@ -5,6 +5,7 @@ import logger from '../logger.js';
 import verifyCodeController from '../controllers/verify/index.js';
 import authController from '../controllers/auth/index.js';
 import profileRouter from './profile.js';
+import gamesRouter from './games.js';
 
 
 const mainRouter = express.Router();
@@ -13,6 +14,7 @@ mainRouter.post('/signup', signupController);
 mainRouter.post('/verify', verifyCodeController);
 mainRouter.post('/auth', authController);
 mainRouter.use('/profile', profileRouter);
+mainRouter.use('/games', gamesRouter);
 mainRouter.use(function(err: ApiError, _: any, res: Response, next: () => void) {
   if (err) {
     res.statusCode = err.code;

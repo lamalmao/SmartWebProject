@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
 import { IProfileAccessRequest, IProfileAccessResponse } from './profile-access-middleware.js';
-// import { Types } from 'mongoose';
-// import userModel, { ROLES } from '../../models/user/index.js';
 import AuthMechanism from '../../auth-mechanism.js';
 import { Types } from 'mongoose';
 import userModel, { ROLES } from '../../models/user/index.js';
@@ -24,7 +22,7 @@ export default async function profileAccessController(req: Request<{}, {}, IProf
     const userId: Types.ObjectId = token['userId'];
     console.log(data.userId, userId);
 
-    if (userId !== data.userId) {
+    if (userId != data.userId) {
       const check = await userModel.findOne({
         _id: userId
       }, {
