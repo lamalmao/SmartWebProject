@@ -26,8 +26,7 @@ export default async function getGameController(req: Request<{}, {}, IGameGetReq
         throw new Error('нет доступа');
       }
 
-      const userId: Types.ObjectId = tokenData['userid'];
-      console.log(userId);
+      const userId: Types.ObjectId = tokenData['userId'];
       const user = await userModel.findById(userId, {
         role: 1
       });
