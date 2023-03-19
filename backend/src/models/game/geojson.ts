@@ -1,4 +1,4 @@
-import { Schema, SchemaTypes } from 'mongoose';
+import { Schema } from 'mongoose';
 import { IFeature, IFeatureCollection } from './geojson.d.js';
 
 export const Feature = new Schema<IFeature>({
@@ -16,7 +16,7 @@ export const Feature = new Schema<IFeature>({
   geometry: {
     type: {
       coordinates: {
-        type: SchemaTypes.Array,
+        type: [],
         required: true
       },
       type: {
